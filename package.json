@@ -12,10 +12,12 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
+    "server": "nodemon ./index.js --ignore src/",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,7 +28,10 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "proxy": "http://localhost:3001",
   "devDependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^4.0.1",
     "semistandard": "^12.0.1"
   }
 }
